@@ -3,52 +3,22 @@
 using namespace std;
 int adiff(int A,int B)
 {
-  int C,i=0;
-  while (i == 0)
+  int C = (A-B)%360;
+  if(C < -180)
   {
-    if(A>360)
-    {
-      A -= 360;
-    }
-    else
-    {
-      i++;
-    }
+    C+=360;
   }
-  i=0;
-
-  while (i == 0)
+  if(C > 180)
   {
-    if(B>=360)
-    {
-      B -= 360;
-    }
-    else
-    {
-      i++;
-    }
-    
+    C-=360; 
   }
-  x=A-B;
-  y=(360-B)+A;
-  if(x<0)
+  if(C < 0)
   {
-    x=x*x-1;
+    C=-C; 
   }
-  if(y<0)
-  {
-    y=y*-1;
-  }
-  if(x <= y)
-  {
-    return x;
-  }
-  else
-  {
-    return y;
-  }
+  return C;
 }
-
+  
 int main(){
   cout << adiff(180,270) << endl;
   cout << adiff(210,45) << endl;
